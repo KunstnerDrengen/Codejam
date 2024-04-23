@@ -7,7 +7,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("oNDROP2");
+        Debug.Log("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         if (eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
