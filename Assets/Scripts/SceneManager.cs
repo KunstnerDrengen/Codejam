@@ -8,6 +8,7 @@ public class SceneManager : MonoBehaviour
     // dont mind de lange parametrer, det er basically bare en måde at få fat i scenenavnet fra indexen.
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(_currentMainSceneIndex).name);
     }
 
