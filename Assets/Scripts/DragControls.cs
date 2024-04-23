@@ -12,7 +12,7 @@ public class DragControls : MonoBehaviour
 
     private void Awake()
     {
-        DragControls[] controller = FindObjectOfType<DragControls>();
+       // DragControls[] controller = FindObjectOfType<DragControls>();
     }
 
     void Update()
