@@ -19,21 +19,22 @@ public class SceneManager : MonoBehaviour
     // desuden skifter den bare tilbage til scenen med index 0 når den bliver called ved sidste scene.
     public void LoadNextMainScene() 
     {
-        _currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        if (_currentSceneIndex == UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings - 1) {
-            Debug.LogWarning("No more scenes to load. Loading first scene.");
-            LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(0).name);
+        _nextSceneIndex = (_currentSceneIndex + 1) % UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
+
+        if (_nextSceneIndex == 0) {
+            Debug.LogWarning("No more scenes to load.");;
             return;
         }
         
-        _nextSceneIndex = (_currentSceneIndex + 1) % UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
-
+        _currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(_nextSceneIndex).name);
     }
 
     // den der faktisk ændrer scenen - den her skal vi call med mini game navnene når vi når dertil.
-    public void LoadScene(string sceneName) // 
+    public void LoadScene(string sceneName) 
     {
+        UnityEngine.SceneManagement.Scene sceneToLoad = UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(this.gameObject, sceneToLoad);
     }
 }
