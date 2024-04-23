@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clara.unity
     guid: 788917075cbcd1543890f4591e426b6c
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7ff827415846f474aa9417ec1828fb1b, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 2aecdebf4ec045d43b71984f69750853, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: a1490967b37948544b53f6833ae4c0d3, type: 2}
