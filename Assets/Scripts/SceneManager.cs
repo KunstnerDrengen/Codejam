@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
+
+    // PREFACE: scriptet assumer at den første scene er den med index 0 (main menu formentligt) -
+    // hvis det er ikke, så skal vi lige ændre nogle ting.
     private int _currentMainSceneIndex = 0;
     private int _nextMainSceneIndex = 0;
     
@@ -9,7 +12,6 @@ public class SceneManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(_currentMainSceneIndex).name);
     }
 
     // når den her bliver called så skifter den til næste scene baseret på den nuværende scenes index.
