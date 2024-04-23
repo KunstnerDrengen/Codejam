@@ -1,26 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
+    private int _currentMainSceneIndex = 0;
+    private int _nextMainSceneIndex = 0;
+    
+    // dont mind de lange parametrer, det er basically bare en måde at få fat i scenenavnet fra indexen.
     void Start()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(_currentMainSceneIndex).name);
     }
 
-    public void LoadScene() 
+    // når den her bliver called så skifter den til næste scene baseret på den nuværende scenes index.
+    // virker også når vi er i mini games, da de bliver called seperat fra main scenes.
+    // desuden skifter den bare tilbage til scenen med index 0 når den bliver called ved sidste scene.
+    public void LoadNextMainScene() 
     {
-        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
-        int nextSceneIndex = (currentSceneIndex + 1);
+        _nextMainSceneIndex = (_currentMainSceneIndex + 1) % UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
 
-        if (nextSceneIndex == UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
-            currentSceneIndex = 0;
-            Debug.LogWarning("No more scenes to load. Loading MainMenu.");
-            return;
-            }
+        if (_nextMainSceneIndex == 0) {
+            Debug.LogWarning("No more scenes to load. Loading scene 0.");
+        }
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneIndex);
+        LoadScene(UnityEngine.SceneManagement.SceneManager.GetSceneByBuildIndex(_nextMainSceneIndex).name);
+        _currentMainSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+    }
+
+    // den der faktisk ændrer scenen - den her skal vi call med mini game navnene når vi når dertil.
+    public void LoadScene(string sceneName) // 
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }
