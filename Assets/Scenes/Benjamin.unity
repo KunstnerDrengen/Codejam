@@ -225,7 +225,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1626224850}
   - component: {fileID: 1626224849}
-  - component: {fileID: 1626224848}
   m_Layer: 0
   m_Name: Rufus_Kim_Possible
   m_TagString: Untagged
@@ -233,19 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1626224848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626224847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42d9659a7de0ba742bedf3502e91c04c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Drag_Drop: 0
 --- !u!212 &1626224849
 SpriteRenderer:
   m_ObjectHideFlags: 0
